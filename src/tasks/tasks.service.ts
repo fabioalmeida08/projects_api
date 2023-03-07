@@ -1,4 +1,4 @@
-import { BadRequestException, Injectable } from '@nestjs/common';
+import { BadRequestException, HttpStatus, Injectable } from '@nestjs/common';
 import { CreateTaskDto } from './dto/create-task.dto';
 import { UpdateTaskDto } from './dto/update-task.dto';
 import { Task } from './entities/task.entity';
@@ -38,7 +38,14 @@ export class TasksService {
     return this.repo.save(updatedTask);
   }
 
-  remove(id: string) {
-    return `This action removes a #${id} task`;
+  async remove(id: string) {
+    const task = await this.findOne(id);
+
+    this.repo.remove(task);
+
+    return {
+      statusCode: 200,
+      message: 'task removed',
+    };
   }
 }
