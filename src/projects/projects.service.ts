@@ -1,5 +1,5 @@
 import { BadRequestException, Injectable } from '@nestjs/common';
-import { CreateProjectDto } from './dto/create-project.dto';
+import { CreateProjectDto } from './dto/project-create.dto';
 import { UpdateProjectDto } from './dto/project-update.dto';
 import { Project } from './entities/project.entity';
 import { InjectRepository } from '@nestjs/typeorm';
