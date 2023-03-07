@@ -15,7 +15,7 @@ export class ProjectsService {
   }
 
   async findAll() {
-    return `This action returns all projects`;
+    return await this.repo.find();
   }
 
   async findOne(id: string) {
