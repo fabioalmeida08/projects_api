@@ -46,7 +46,7 @@ export class ProjectsService {
 
     return {
       statusCode: 200,
-      message: 'task removed',
+      message: 'project removed',
     };
   }
 }
