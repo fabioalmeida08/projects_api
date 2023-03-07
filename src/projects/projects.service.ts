@@ -29,7 +29,14 @@ export class ProjectsService {
   }
 
   async update(id: string, updateProjectDto: UpdateProjectDto) {
-    return `This action updates a #${id} project`;
+    const project = await this.findOne(id);
+
+    const updatedProject = {
+      ...project,
+      ...updateProjectDto,
+    };
+
+    return this.repo.save(updatedProject);
   }
 
   async remove(id: string) {
