@@ -40,6 +40,8 @@ export class ProjectsService {
   }
 
   async remove(id: string) {
-    return `This action removes a #${id} project`;
+    let project = await this.findOne(id);
+
+    return this.repo.remove(project);
   }
 }
