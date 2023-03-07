@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { BadRequestException, Injectable } from '@nestjs/common';
 import { CreateProjectDto } from './dto/create-project.dto';
 import { UpdateProjectDto } from './dto/update-project.dto';
 import { Project } from './entities/project.entity';
@@ -14,19 +14,24 @@ export class ProjectsService {
     return await this.repo.save(project);
   }
 
-  findAll() {
+  async findAll() {
     return `This action returns all projects`;
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} project`;
+  async findOne(id: string) {
+    const project = await this.repo.findOneBy({ id });
+
+    if (!project) {
+      throw new BadRequestException('project with this id not found')
+    }
+    return project;
   }
 
-  update(id: number, updateProjectDto: UpdateProjectDto) {
+  async update(id: string, updateProjectDto: UpdateProjectDto) {
     return `This action updates a #${id} project`;
   }
 
-  remove(id: number) {
+  async remove(id: string) {
     return `This action removes a #${id} project`;
   }
 }
