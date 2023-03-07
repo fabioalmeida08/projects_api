@@ -21,14 +21,21 @@ export class TasksService {
     const task = await this.repo.findOneBy({ id });
 
     if (!task) {
-      throw new BadRequestException('task with this id not found')
+      throw new BadRequestException('task with this id not found');
     }
 
     return task;
   }
 
-  update(id: string, updateTaskDto: UpdateTaskDto) {
-    return `This action updates a #${id} task`;
+  async update(id: string, updateTaskDto: UpdateTaskDto) {
+    const task = await this.findOne(id);
+
+    const updatedTask = {
+      ...task,
+      ...updateTaskDto,
+    };
+
+    return this.repo.save(updatedTask);
   }
 
   remove(id: string) {
