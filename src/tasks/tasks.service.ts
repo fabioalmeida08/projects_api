@@ -7,8 +7,10 @@ import { Repository } from 'typeorm';
 @Injectable()
 export class TasksService {
   constructor(@InjectRepository(Task) private repo: Repository<Task>) {}
-  create(createTaskDto: CreateTaskDto) {
-    return 'This action adds a new task';
+  async create(createTaskDto: CreateTaskDto) {
+    const task = this.repo.create(createTaskDto);
+
+    return await this.repo.save(task);
   }
 
   findAll() {
