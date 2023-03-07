@@ -4,11 +4,17 @@ import { UpdateTaskDto } from './dto/update-task.dto';
 import { Task } from './entities/task.entity';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
+import { Project } from '../projects/entities/project.entity';
 @Injectable()
 export class TasksService {
-  constructor(@InjectRepository(Task) private repo: Repository<Task>) {}
-  async create(createTaskDto: CreateTaskDto) {
+  constructor(
+    @InjectRepository(Task) private repo: Repository<Task>,
+    @InjectRepository(Project) private projectRepo: Repository<Project>,
+  ) {}
+  async create(createTaskDto: CreateTaskDto, projectId: string) {
     const task = this.repo.create(createTaskDto);
+    const project = await this.projectRepo.findOneBy({ id: projectId });
+    task.project = project;
 
     return await this.repo.save(task);
   }
