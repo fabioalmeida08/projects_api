@@ -1,11 +1,11 @@
-import { IsNotEmpty, IsString, IsEnum, IsDate } from 'class-validator';
+import { IsNotEmpty, IsString, IsEnum, IsDateString } from 'class-validator';
 import { TasksStatusEnum } from './tasks-enum';
 export class CreateTaskDto {
   @IsNotEmpty()
   @IsString()
   descricao: string;
 
-  @IsDate()
+  @IsDateString()
   data_limite: Date;
 
   @IsEnum(TasksStatusEnum)
