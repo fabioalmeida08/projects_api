@@ -22,8 +22,9 @@ export class ProjectsService {
     const project = await this.repo.findOneBy({ id });
 
     if (!project) {
-      throw new BadRequestException('project with this id not found')
+      throw new BadRequestException('project with this id not found');
     }
+
     return project;
   }
 
