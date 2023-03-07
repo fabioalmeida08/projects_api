@@ -12,6 +12,9 @@ export class Project {
   @Column()
   descricao: string;
 
-  @OneToMany((_type) => Task, (task) => task.project, { eager: true })
+  @OneToMany((_type) => Task, (task) => task.project, {
+    eager: true,
+    cascade: true,
+  })
   tasks: Task[];
 }
