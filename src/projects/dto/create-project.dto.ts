@@ -3,9 +3,9 @@ import { IsNotEmpty, IsString } from 'class-validator';
 export class CreateProjectDto {
   @IsNotEmpty()
   @IsString()
-  email: string;
+  name: string;
 
   @IsNotEmpty()
   @IsString()
-  password: string;
+  descricao: string;
 }
