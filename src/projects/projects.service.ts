@@ -42,6 +42,11 @@ export class ProjectsService {
   async remove(id: string) {
     let project = await this.findOne(id);
 
-    return this.repo.remove(project);
+    this.repo.remove(project);
+
+    return {
+      statusCode: 200,
+      message: 'task removed',
+    };
   }
 }
