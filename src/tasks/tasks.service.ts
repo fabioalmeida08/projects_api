@@ -13,8 +13,8 @@ export class TasksService {
     return await this.repo.save(task);
   }
 
-  findAll() {
-    return `This action returns all tasks`;
+  async findAll() {
+    return await this.repo.find()
   }
 
   findOne(id: number) {
