@@ -10,11 +10,13 @@ import {
 import { TasksService } from './tasks.service';
 import { CreateTaskDto } from './dto/create-task.dto';
 import { UpdateTaskDto } from './dto/update-task.dto';
-
+import { Serialize } from '../interceptors/serialize.interceptors';
+import { TaskDto } from './dto/TaskDto';
 @Controller('tasks')
 export class TasksController {
   constructor(private readonly tasksService: TasksService) {}
 
+  @Serialize(TaskDto)
   @Post(':projectId')
   create(
     @Body() createTaskDto: CreateTaskDto,
