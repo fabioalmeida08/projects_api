@@ -17,6 +17,8 @@ export class Task {
   @Column()
   status: TasksStatusEnum;
 
-  @ManyToOne((_type) => Project, (project) => project.tasks)
+  @ManyToOne((_type) => Project, (project) => project.tasks, {
+    onDelete: 'CASCADE',
+  })
   project: Project;
 }
