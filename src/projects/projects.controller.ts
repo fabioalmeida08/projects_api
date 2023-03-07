@@ -8,7 +8,7 @@ import {
   Delete,
 } from '@nestjs/common';
 import { ProjectsService } from './projects.service';
-import { CreateProjectDto } from './dto/create-project.dto';
+import { CreateProjectDto } from './dto/project-create.dto';
 import { UpdateProjectDto } from './dto/project-update.dto';
 import {
   ApiBody,
@@ -16,7 +16,6 @@ import {
   ApiResponse,
   ApiTags,
 } from '@nestjs/swagger';
-import { ProjectDto } from './dto/project-body.dto';
 import { ProjectResponseDto } from './dto/project-response.dto';
 import { GetProjectDto } from './dto/project-get.dto';
 import { UpdateProjectResponseDto } from './dto/project-update-response.dto';
