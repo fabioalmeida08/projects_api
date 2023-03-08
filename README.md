@@ -2,14 +2,14 @@
 
 Hello Spartan ⚔️ !! This is the Project_API challenge application made with NestJS and PostgreSQL database. This README file contains instructions on how to test the application.
 
-<!-- ## Testing the Application Online
 
-You can test the application using Swagger API endpoint
 
-1. Open your web browser and navigate to the following URL: -->
 # How To Use
 you can see how to use the API using the endpoint **/api** that show the docmentation of all endpoints, schemas, request bodys and responses of all routes.
 
+## Testing the Application Online 🌐
+
+You can test the application [here](http://18.231.117.150/api)
 ## Running the app using Docker Compose 🐋 (recommended)
 
 ### Prerequisites
@@ -40,7 +40,7 @@ services:
 
   api:
     container_name: projects-api
-    image: fabio08/sparta-project-api:1.0
+    image: fabio08/sparta-project-api:2.0
     environment:
       DATABASE_URL: 'postgres://postgres:1234@db:5432/projects'
     tty: true
@@ -94,7 +94,12 @@ $ cd projects_api
 5. Run the following command to start the app: `npm run start:dev` or `yarn start:dev`
 6. test the endpoints at http://localhost:3001/ using insomnia, postman or your favorite tool.
 
+## About the Deploy
+
+![deploy.png](https://imgur.com/a/qNB725K "deploy")
+
+
 ### TODO
-- [ ] Deploy the application online
-- [ ] create a troubleshot section
+- [x] Deploy the application online
 - [x] create template file for insomnia to test api endpoints
+- [ ] create a troubleshot section
