@@ -11,10 +11,7 @@ export class CreateTaskDto {
   @IsDateString()
   data_limite: Date;
 
-  @ApiProperty({
-    example: 'EM_ANDAMENTO',
-    description: "Values must be 'EM_ANDAMENTO' OR 'ABERTA' OR 'FEITA'",
-  })
+  @ApiProperty({ example: 'EM_ANDAMENTO' })
   @IsEnum(TasksStatusEnum)
   @IsNotEmpty()
   status: TasksStatusEnum;
