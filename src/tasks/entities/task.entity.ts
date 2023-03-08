@@ -14,7 +14,7 @@ export class Task {
   @Column()
   data_limite: Date;
 
-  @Column()
+  @Column({ default: 'ABERTA' })
   status: TasksStatusEnum;
 
   @ManyToOne((_type) => Project, (project) => project.tasks, {
