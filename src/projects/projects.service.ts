@@ -43,10 +43,5 @@ export class ProjectsService {
     let project = await this.findOne(id);
 
     this.repo.remove(project);
-
-    return {
-      statusCode: 200,
-      message: 'project removed',
-    };
   }
 }
