@@ -26,9 +26,9 @@ import { UpdateProjectResponseDto } from './dto/project-update-response.dto';
 export class ProjectsController {
   constructor(private readonly projectsService: ProjectsService) {}
 
+  @Post()
   @ApiCreatedResponse({ type: ProjectResponseDto })
   @ApiBody({ type: CreateProjectDto })
-  @Post()
   create(@Body() createProjectDto: CreateProjectDto) {
     return this.projectsService.create(createProjectDto);
   }
