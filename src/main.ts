@@ -14,7 +14,7 @@ async function bootstrap() {
 
   const config = new DocumentBuilder()
     .setTitle('Sparta Project API')
-    .setDescription('')
+    .setDescription('API endpoints')
     .setVersion('1.0')
     .build();
 
