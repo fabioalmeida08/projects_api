@@ -99,8 +99,12 @@ deploy made on aws , using 2 tier web application
 
 ![deploy.png](https://i.imgur.com/IyWMUUp.png "deploy")
 
+## EXTRA: How to use the collection
+
+you can follow the guide on [notion](https://rain-governor-e71.notion.site/How-to-use-the-collection-d2f4c2a66a61497697271e6e67ebc3b4)
+
 
 ### TODO
 - [x] Deploy the application online
 - [x] create template file for insomnia to test api endpoints
-- [ ] create a troubleshot section
+- [ ] create a troubleshoot section
