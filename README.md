@@ -1,73 +1,99 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
-</p>
+# Project-api
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+Hello Spartan ⚔️ !! This is the Project_API challenge application made with NestJS and PostgreSQL database. This README file contains instructions on how to test the application.
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+<!-- ## Testing the Application Online
 
-## Description
+You can test the application using Swagger API endpoint
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+1. Open your web browser and navigate to the following URL: -->
+# How To Use
+you can see how to use the API using the endpoint **/api** that show the docmentation of all endpoints, schemas, request bodys and responses of all routes.
 
-## Installation
+## Running the app using Docker Compose 🐋 (recommended)
 
-```bash
-$ yarn install
+### Prerequisites
+- [Docker](https://docs.docker.com/engine/install/) and [Docker Compose](https://docs.docker.com/compose/install/) installed on your machine
+
+1. create a docker-compose.yml file using the example bellow, you can change the default envs if you want to.
+
+```YAML
+version: '3.9'
+services:
+  db:
+    container_name: 'db'
+    image: postgres
+    environment:
+      POSTGRES_PASSWORD: '1234'	
+      POSTGRES_USER: 'postgres'	
+      POSTGRES_DB: 'projects'
+    ports:
+      - 5434:5432
+    volumes:
+      - pg-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ['CMD', 'pg_isready', '-h', 'db', '-p', '5432']
+      interval: 2s
+      timeout: 5s
+      retries: 10
+      start_period: 1s
+
+  api:
+    container_name: projects-api
+    image: fabio08/sparta-project-api:1.0
+    environment:
+      DATABASE_URL: 'postgres://postgres:1234@db:5432/projects'
+    tty: true
+    ports:
+      - 80:3001
+    depends_on:
+      db:
+        condition: service_healthy
+
+volumes:
+  pg-data:
+
 ```
-
-## Running the app
-
-```bash
-# development
-$ yarn run start
-
-# watch mode
-$ yarn run start:dev
-
-# production mode
-$ yarn run start:prod
+2. execute the file using docker composer
 ```
-
-## Test
-
-```bash
-# unit tests
-$ yarn run test
-
-# e2e tests
-$ yarn run test:e2e
-
-# test coverage
-$ yarn run test:cov
+$ docker-compose -f path/to/the/docker-compose.yml up -d
 ```
+3. test the endpoints at http://localhost using insomnia, postman or your favorite tool.
+## alternatively you can build the image locally from the repo files
 
-## Support
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+1. clone the repo to your machine and build the image locally
+```
+$ git clone https://github.com/fabioalmeida08/projects_api
+$ cd projects_api
+```
+3. use .env.example file to make a .env file in the same directory
+3. **set the variables in the new .env file following the example**
+4.run the docker-compose command to build the image locally
+```
+$ docker-compose up -d --build
+```
+5. test the endpoints at http://localhost using insomnia, postman or your favorite tool.
 
-## Stay in touch
+## Running app locally on your machine 🖥️ (not recommended)
 
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+### Prerequisites
+- [Node.js](https://nodejs.org/en/download/) and [NPM](https://www.npmjs.com/package/npm) or [YARN](https://classic.yarnpkg.com/lang/en/docs/install/) installed on your machine
+- Postgres instance running on your machine 
+- The repo files on your machine
 
-## License
+### Steps
+1. clone the repo to your machine and move to where the repo as cloned
+```
+$ git clone https://github.com/fabioalmeida08/projects_api
+$ cd projects_api
+```
+2. Run the following command to install the dependencies: `npm install` or `yarn install` 
+3. use .env.example file to make a .env file in the same directory
+4. set the variables in the new .env file following the example in the .ev.example
+5. Run the following command to start the app: `npm run start:dev` or `yarn start:dev`
+6. test the endpoints at http://localhost:3001/ using insomnia, postman or your favorite tool.
 
-Nest is [MIT licensed](LICENSE).
+### TODO
+- [ ] Deploy the application online
+- [ ] create a troubleshot section
