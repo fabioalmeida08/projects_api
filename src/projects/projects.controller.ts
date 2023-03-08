@@ -6,6 +6,7 @@ import {
   Patch,
   Param,
   Delete,
+  HttpCode,
 } from '@nestjs/common';
 import { ProjectsService } from './projects.service';
 import { CreateProjectDto } from './dto/project-create.dto';
@@ -52,6 +53,7 @@ export class ProjectsController {
   }
 
   @Delete(':id')
+  @HttpCode(204)
   @ApiResponse({ status: 200 })
   remove(@Param('id') id: string) {
     return this.projectsService.remove(id);
