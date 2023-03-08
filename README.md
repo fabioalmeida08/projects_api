@@ -97,3 +97,4 @@ $ cd projects_api
 ### TODO
 - [ ] Deploy the application online
 - [ ] create a troubleshot section
+- [ ] create template file for insomnia and postman to test api endpoints
