@@ -95,8 +95,9 @@ $ cd projects_api
 6. test the endpoints at http://localhost:3001/ using insomnia, postman or your favorite tool.
 
 ## About the Deploy
+deploy made on aws , using 2 tier web application
 
-![deploy.png](https://imgur.com/a/qNB725K "deploy")
+![deploy.png](https://i.imgur.com/IyWMUUp.png "deploy")
 
 
 ### TODO
