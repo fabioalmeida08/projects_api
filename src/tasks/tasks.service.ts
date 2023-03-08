@@ -48,10 +48,5 @@ export class TasksService {
     const task = await this.findOne(id);
 
     this.repo.remove(task);
-
-    return {
-      statusCode: 200,
-      message: 'task removed',
-    };
   }
 }
