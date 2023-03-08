@@ -54,7 +54,7 @@ export class ProjectsController {
 
   @Delete(':id')
   @HttpCode(204)
-  @ApiResponse({ status: 200 })
+  @ApiResponse({ status: 204 })
   remove(@Param('id') id: string) {
     return this.projectsService.remove(id);
   }
