@@ -95,9 +95,10 @@ $ cd projects_api
 6. test the endpoints at http://localhost:3001/ using insomnia, postman or your favorite tool.
 
 ## About the Deploy
-deploy made on aws , using 2 tier web application
 
-![deploy.png](https://i.imgur.com/IyWMUUp.png "deploy")
+application is built using a 2 tier architecture, consisting of a REST API server and a backend database server. The REST API server is hosted on an Amazon Elastic Compute Cloud (EC2) instance running a Docker container, located in a public subnet. The Docker container serves as the REST API endpoint for the application. The backend database server is hosted on an Amazon Relational Database Service (RDS) instance, located in a private subnet in another Availability Zone (AZ)
+
+![deploy.png](https://i.imgur.com/bbjtySA.png "deploy")
 
 ## EXTRA: How to use the collection
 
