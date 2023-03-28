@@ -7,9 +7,9 @@ Hello Spartan ⚔️ !! This is the Project_API challenge application made with 
 # How To Use
 you can see how to use the API using the endpoint **/api** that show the docmentation of all endpoints, schemas, request bodys and responses of all routes.
 
-## Testing the Application Online 🌐
+## ~~Testing the Application Online 🌐~~
 
-You can test the application [here](http://18.231.117.150/api)
+~~You can test the application [here]()~~
 ## Running the app using Docker Compose 🐋 (recommended)
 
 ### Prerequisites
